@@ -1,0 +1,7 @@
+/target/
+/.vscode/
+/dados_novo/
+/dados_5440/
+.mvn/
+*.log
+.DS_Store

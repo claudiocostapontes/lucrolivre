@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: lucrolivre-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: lucrolivre_db
+    ports:
+      - "5440:5432"
+    volumes:
+      - ./dados_5440:/var/lib/postgresql/data
+    restart: unless-stopped
