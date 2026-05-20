@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record LancamentoRequestDTO(
-        String usuarioId,
-        LocalDate data,
-        Origem origem,
-        BigDecimal valorBruto,
-        BigDecimal gastoCombustivel,
-        BigDecimal gastoManutencao
+    String usuarioId,
+    LocalDate data,
+    Origem origem,
+    BigDecimal valorBruto,
+    BigDecimal gastoCombustivel,
+    BigDecimal gastoManutencao
 ) {}
