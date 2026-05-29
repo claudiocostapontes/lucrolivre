@@ -1,7 +1,2 @@
-/target/
-/.vscode/
-/dados_novo/
-/dados_5440/
-.mvn/
-*.log
-.DS_Store
+ssh-key-2026-05-29.key
+ssh-key-2026-05-29.key.pub

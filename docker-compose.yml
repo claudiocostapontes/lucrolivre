@@ -1,13 +1,23 @@
-version: '3.8'
-
 services:
+  api:
+    build: .
+    container_name: lucrolivre-api
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/lucrolivre_db
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres:16-alpine
     container_name: lucrolivre-db
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: lucrolivre_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=lucrolivre_db
     ports:
       - "5440:5432"
     volumes:

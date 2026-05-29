@@ -1,0 +1,13 @@
+br\com\lucrolivre\infrastructure\persistence\repository\MotoristaRepository.class
+br\com\lucrolivre\domain\model\Origem.class
+br\com\lucrolivre\web\dto\LancamentoResponseDTO.class
+br\com\lucrolivre\domain\model\ModeloFiscal.class
+br\com\lucrolivre\infrastructure\persistence\entity\LancamentoEntity.class
+br\com\lucrolivre\LucroLivreApplication.class
+br\com\lucrolivre\web\controller\MotoristaController.class
+br\com\lucrolivre\web\controller\LancamentoController.class
+br\com\lucrolivre\application\usecase\ListarLancamentosUseCase.class
+br\com\lucrolivre\infrastructure\persistence\entity\MotoristaEntity.class
+br\com\lucrolivre\infrastructure\persistence\repository\LancamentoRepository.class
+br\com\lucrolivre\application\usecase\SalvarLancamentoUseCase.class
+br\com\lucrolivre\application\dto\LancamentoRequestDTO.class

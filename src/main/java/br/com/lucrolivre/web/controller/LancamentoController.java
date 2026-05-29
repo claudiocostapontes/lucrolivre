@@ -2,20 +2,23 @@ package br.com.lucrolivre.web.controller;
 
 import br.com.lucrolivre.application.dto.LancamentoRequestDTO;
 import br.com.lucrolivre.web.dto.LancamentoResponseDTO;
-import br.com.lucrolivre.application.usecase.SalvarLancamentoUseCase; // Não esqueça este import!
+import br.com.lucrolivre.application.usecase.SalvarLancamentoUseCase;
+import br.com.lucrolivre.application.usecase.ListarLancamentosUseCase;
 import org.springframework.web.bind.annotation.*;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/lancamentos")
 public class LancamentoController {
 
-    // 1. Declare a variável final (o Spring vai injetar isso para você)
     private final SalvarLancamentoUseCase salvarLancamentoUseCase;
+    private final ListarLancamentosUseCase listarLancamentosUseCase;
 
-    // 2. O Construtor: O Spring usa isso para "ligar" o UseCase ao Controller
-    public LancamentoController(SalvarLancamentoUseCase salvarLancamentoUseCase) {
+    public LancamentoController(SalvarLancamentoUseCase salvarLancamentoUseCase, ListarLancamentosUseCase listarLancamentosUseCase) {
         this.salvarLancamentoUseCase = salvarLancamentoUseCase;
+        this.listarLancamentosUseCase = listarLancamentosUseCase;
     }
 
     @PostMapping
@@ -23,16 +26,21 @@ public class LancamentoController {
         var entity = salvarLancamentoUseCase.executar(dto);
         
         BigDecimal lucro = entity.getValorBruto()
-            .subtract(entity.getGastoCombustivel())
-            .subtract(entity.getGastoManutencao());
+                .subtract(entity.getGastoCombustivel())
+                .subtract(entity.getGastoManutencao());
 
         return new LancamentoResponseDTO(
-            entity.getId().toString(),
-            entity.getMotorista().getNome(),
-            entity.getData(),
-            entity.getOrigem().name(),
-            entity.getValorBruto(),
-            lucro
+                entity.getId().toString(),
+                entity.getMotorista().getNome(),
+                entity.getData(),
+                entity.getOrigem().name(),
+                entity.getValorBruto(),
+                lucro
         );
+    }
+
+    @GetMapping
+    public List<LancamentoResponseDTO> listar() {
+        return listarLancamentosUseCase.executar();
     }
 }
