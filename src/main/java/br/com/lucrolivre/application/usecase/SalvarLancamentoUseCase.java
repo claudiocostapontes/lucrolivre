@@ -7,6 +7,7 @@ import br.com.lucrolivre.infrastructure.persistence.repository.LancamentoReposit
 import br.com.lucrolivre.infrastructure.persistence.repository.MotoristaRepository;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SalvarLancamentoUseCase {
