@@ -6,8 +6,6 @@ import br.com.lucrolivre.infrastructure.persistence.entity.MotoristaEntity;
 import br.com.lucrolivre.infrastructure.persistence.repository.LancamentoRepository;
 import br.com.lucrolivre.infrastructure.persistence.repository.MotoristaRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.UUID;
 
 @Service
