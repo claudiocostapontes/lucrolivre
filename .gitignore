@@ -1,5 +1,19 @@
-ssh-key-2026-05-29.key
-ssh-key-2026-05-29.key.pub
-dados_5440/
-target/
+# Pastas de build e target
+/target/
+/build/
+.gradle/
+.settings/
+.classpath
+.project
+
+# Pastas da IDE (Onde vive o seu problema)
+.idea/
+*.iml
+
+# Pastas de banco de dados e logs
 dados_banco/
+*.log
+
+# Pastas de sistema operacional
+.DS_Store
+Thumbs.db
