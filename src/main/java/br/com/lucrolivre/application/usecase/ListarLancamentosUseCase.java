@@ -1,6 +1,7 @@
 package br.com.lucrolivre.application.usecase;
 
 import br.com.lucrolivre.domain.repository.LancamentoRepository;
+import br.com.lucrolivre.infrastructure.persistence.entity.MotoristaEntity;
 import br.com.lucrolivre.infrastructure.persistence.repository.DynamoDbMotoristaRepository;
 import br.com.lucrolivre.web.dto.LancamentoResponseDTO;
 import org.springframework.stereotype.Service;
@@ -9,8 +10,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
-import static org.springframework.boot.web.server.Ssl.ClientAuth.map;
 
 @Service
 public class ListarLancamentosUseCase {
@@ -30,11 +29,11 @@ public class ListarLancamentosUseCase {
                     .subtract(entity.getGastoManutencao());
 
             String motoristaNome = motoristaRepository.findById(UUID.fromString(entity.getMotoristaId()))
-                    .map(motorista -> motorista.getNome())
+                    .map(MotoristaEntity::getNome)
                     .orElse("Motorista não encontrado");
 
             return new LancamentoResponseDTO(
-                    entity.getId().toString(),
+                    entity.getId(),
                     motoristaNome,
                     entity.getData(),
                     entity.getOrigem().name(),

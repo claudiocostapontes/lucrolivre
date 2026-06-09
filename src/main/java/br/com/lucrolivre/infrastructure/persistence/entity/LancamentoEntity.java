@@ -3,7 +3,6 @@ package br.com.lucrolivre.infrastructure.persistence.entity;
 import br.com.lucrolivre.domain.model.Origem;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
-import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
 
 import java.math.BigDecimal;
@@ -22,9 +21,6 @@ public class LancamentoEntity {
     private BigDecimal gastoCombustivel;
     private BigDecimal gastoManutencao;
 
-    // Construtor vazio é OBRIGATÓRIO para o SDK do DynamoDB
-    public LancamentoEntity() {}
-
     public LancamentoEntity(String id, String motoristaId, LocalDate data, Origem origem,
                             BigDecimal valorBruto, BigDecimal gastoCombustivel, BigDecimal gastoManutencao) {
         this.id = id;
@@ -41,35 +37,21 @@ public class LancamentoEntity {
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
-    // ==========================================
-    // CORREÇÃO FINAL: A AWS EXIGE A SORT KEY "sk"
-    // ==========================================
-    @DynamoDbSortKey
-    @DynamoDbAttribute("sk")
-    public String getSk() { return sk; }
-    public void setSk(String sk) { this.sk = sk; }
-
     @DynamoDbAttribute("motoristaId")
     public String getMotoristaId() { return motoristaId; }
-    public void setMotoristaId(String motoristaId) { this.motoristaId = motoristaId; }
 
     @DynamoDbAttribute("data")
     public LocalDate getData() { return data; }
-    public void setData(LocalDate data) { this.data = data; }
 
     @DynamoDbAttribute("origem")
     public Origem getOrigem() { return origem; }
-    public void setOrigem(Origem origem) { this.origem = origem; }
 
     @DynamoDbAttribute("valorBruto")
     public BigDecimal getValorBruto() { return valorBruto; }
-    public void setValorBruto(BigDecimal valorBruto) { this.valorBruto = valorBruto; }
 
     @DynamoDbAttribute("gastoCombustivel")
     public BigDecimal getGastoCombustivel() { return gastoCombustivel; }
-    public void setGastoCombustivel(BigDecimal gastoCombustivel) { this.gastoCombustivel = gastoCombustivel; }
 
     @DynamoDbAttribute("gastoManutencao")
     public BigDecimal getGastoManutencao() { return gastoManutencao; }
-    public void setGastoManutencao(BigDecimal gastoManutencao) { this.gastoManutencao = gastoManutencao; }
 }
