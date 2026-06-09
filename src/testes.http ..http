@@ -1,0 +1,12 @@
+### Testar a criação de um lancamento
+POST http://localhost:8081/api/lancamentos
+Content-Type: application/json
+
+{
+  "motoristaId": "driver-001",
+  "data": "2026-06-08",
+  "origem": "UBER",
+  "valorBruto": 1500.50,
+  "gastoCombustivel": 200.00,
+  "gastoManutencao": 50.00
+}
