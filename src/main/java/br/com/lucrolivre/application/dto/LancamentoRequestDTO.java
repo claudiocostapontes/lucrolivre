@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record LancamentoRequestDTO(
-    String usuarioId,
+    String motoristaId,
     LocalDate data,
     Origem origem,
     BigDecimal valorBruto,

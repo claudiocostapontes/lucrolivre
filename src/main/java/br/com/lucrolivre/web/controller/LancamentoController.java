@@ -24,14 +24,14 @@ public class LancamentoController {
     @PostMapping
     public LancamentoResponseDTO criar(@RequestBody LancamentoRequestDTO dto) {
         var entity = salvarLancamentoUseCase.executar(dto);
-        
+
         BigDecimal lucro = entity.getValorBruto()
                 .subtract(entity.getGastoCombustivel())
                 .subtract(entity.getGastoManutencao());
 
         return new LancamentoResponseDTO(
-                entity.getId().toString(),
-                entity.getMotorista().getNome(),
+                entity.getId(), // Assumindo que você tem um getId() na entity
+                entity.getMotoristaId(), // Passa a String do ID
                 entity.getData(),
                 entity.getOrigem().name(),
                 entity.getValorBruto(),

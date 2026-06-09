@@ -1,13 +1,12 @@
 package br.com.lucrolivre.application.usecase;
 
 import br.com.lucrolivre.application.dto.LancamentoRequestDTO;
+import br.com.lucrolivre.domain.repository.LancamentoRepository;
 import br.com.lucrolivre.infrastructure.persistence.entity.LancamentoEntity;
 import br.com.lucrolivre.infrastructure.persistence.entity.MotoristaEntity;
-import br.com.lucrolivre.infrastructure.persistence.repository.LancamentoRepository;
 import br.com.lucrolivre.infrastructure.persistence.repository.MotoristaRepository;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SalvarLancamentoUseCase {
@@ -15,25 +14,32 @@ public class SalvarLancamentoUseCase {
     private final LancamentoRepository lancamentoRepository;
     private final MotoristaRepository motoristaRepository;
 
-    // Injetamos os dois repositórios via construtor
     public SalvarLancamentoUseCase(LancamentoRepository lancamentoRepository, MotoristaRepository motoristaRepository) {
         this.lancamentoRepository = lancamentoRepository;
         this.motoristaRepository = motoristaRepository;
     }
 
-    @Transactional
     public LancamentoEntity executar(LancamentoRequestDTO dto) {
-        // 1. Busca o motorista real no banco ou devolve erro se não existir
-        MotoristaEntity motorista = motoristaRepository.findById(UUID.fromString(dto.usuarioId()))
-                .orElseThrow(() -> new IllegalArgumentException("Motorista não encontrado com o ID informado."));
+        // Validação defensiva
+        if (dto.motoristaId() == null || dto.motoristaId().isEmpty()) {
+            throw new IllegalArgumentException("O campo 'motoristaId' é obrigatório.");
+        }
 
-        // 2. Cria a entidade amarrando o objeto Motorista (e não mais uma String)
+        // Busca o motorista no banco. Agora, com o ajuste na entidade, ele encontrará a pk.
+        MotoristaEntity motorista = motoristaRepository.findById(dto.motoristaId())
+                .orElseThrow(() -> new IllegalArgumentException("Motorista não encontrado com o ID: " + dto.motoristaId()));
+
+        // Cria o lançamento
         LancamentoEntity entity = new LancamentoEntity(
-                null, motorista, dto.data(), dto.origem(),
-                dto.valorBruto(), dto.gastoCombustivel(), dto.gastoManutencao()
+                UUID.randomUUID().toString(),
+                motorista.getId(),
+                dto.data(),
+                dto.origem(),
+                dto.valorBruto(),
+                dto.gastoCombustivel(),
+                dto.gastoManutencao()
         );
-        
-        // 3. Salva no banco de dados
+
         return lancamentoRepository.save(entity);
     }
 }
