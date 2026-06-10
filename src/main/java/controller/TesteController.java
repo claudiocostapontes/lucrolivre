@@ -1,13 +1,13 @@
-package br.com.lucrolivre.web.controller;
+package controller;
 
-import br.com.lucrolivre.application.usecase.SalvarLancamentoUseCase;
+import usecase.SalvarLancamentoUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.lucrolivre.domain.LucroLivreItem;
-import br.com.lucrolivre.domain.service.LucroLivreService;
+import domain.LucroLivreItem;
+import service.LucroLivreService;
 
 
 @RestController

@@ -1,6 +1,6 @@
-package br.com.lucrolivre.infrastructure.persistence.repository;
+package repository;
 
-import br.com.lucrolivre.infrastructure.persistence.entity.MotoristaEntity;
+import entity.MotoristaEntity;
 import org.springframework.stereotype.Repository;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;

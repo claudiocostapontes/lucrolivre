@@ -1,4 +1,4 @@
-package br.com.lucrolivre.domain;
+package domain;
 
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.*;
 

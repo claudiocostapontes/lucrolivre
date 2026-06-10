@@ -1,4 +1,4 @@
-package br.com.lucrolivre.infrastructure.persistence.entity;
+package entity;
 
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;

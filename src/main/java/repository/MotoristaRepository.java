@@ -1,6 +1,6 @@
-package br.com.lucrolivre.infrastructure.persistence.repository;
+package repository;
 
-import br.com.lucrolivre.infrastructure.persistence.entity.MotoristaEntity;
+import entity.MotoristaEntity;
 
 import java.util.Optional;
 import java.util.UUID;

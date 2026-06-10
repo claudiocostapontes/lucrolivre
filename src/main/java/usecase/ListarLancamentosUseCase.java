@@ -1,9 +1,9 @@
-package br.com.lucrolivre.application.usecase;
+package usecase;
 
-import br.com.lucrolivre.domain.repository.LancamentoRepository;
-import br.com.lucrolivre.infrastructure.persistence.entity.MotoristaEntity;
-import br.com.lucrolivre.infrastructure.persistence.repository.DynamoDbMotoristaRepository;
-import br.com.lucrolivre.web.dto.LancamentoResponseDTO;
+import repository.LancamentoRepository;
+import entity.MotoristaEntity;
+import repository.DynamoDbMotoristaRepository;
+import dto.LancamentoResponseDTO;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
