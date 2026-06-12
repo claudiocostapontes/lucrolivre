@@ -1,6 +1,6 @@
-package service;
+package br.com.lucrolivre.service;
 
-import domain.LucroLivreItem;
+import br.com.lucrolivre.domain.LucroLivreItem;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;

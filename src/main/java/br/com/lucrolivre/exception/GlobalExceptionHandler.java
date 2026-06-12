@@ -1,4 +1,4 @@
-package exception;
+package br.com.lucrolivre.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

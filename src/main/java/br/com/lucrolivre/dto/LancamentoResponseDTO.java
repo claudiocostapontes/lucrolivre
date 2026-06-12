@@ -1,11 +1,11 @@
-package dto;
+package br.com.lucrolivre.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record LancamentoResponseDTO(
     String id,
-    String motorista,
+    String motoristaId,
     LocalDate data,
     String origem,
     BigDecimal valorBruto,

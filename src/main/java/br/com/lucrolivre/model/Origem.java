@@ -1,4 +1,4 @@
-package model;
+package br.com.lucrolivre.model;
 
 public enum Origem {
     UBER,

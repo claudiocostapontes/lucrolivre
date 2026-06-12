@@ -1,7 +1,7 @@
-package controller;
+package br.com.lucrolivre.controller;
 
-import repository.MotoristaRepository;
-import entity.MotoristaEntity;
+import br.com.lucrolivre.repository.MotoristaRepository;
+import br.com.lucrolivre.entity.MotoristaEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

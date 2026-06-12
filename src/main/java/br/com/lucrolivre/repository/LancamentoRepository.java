@@ -1,6 +1,6 @@
-package repository;
+package br.com.lucrolivre.repository;
 
-import entity.LancamentoEntity;
+import br.com.lucrolivre.entity.LancamentoEntity;
 import java.util.List;
 
 public interface LancamentoRepository {

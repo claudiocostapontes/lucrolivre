@@ -1,6 +1,6 @@
-package repository;
+package br.com.lucrolivre.repository;
 
-import entity.MotoristaEntity;
+import br.com.lucrolivre.entity.MotoristaEntity;
 
 import java.util.Optional;
 import java.util.UUID;

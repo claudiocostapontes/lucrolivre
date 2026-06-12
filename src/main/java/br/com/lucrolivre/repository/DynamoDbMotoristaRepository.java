@@ -1,6 +1,6 @@
-package repository;
+package br.com.lucrolivre.repository;
 
-import entity.MotoristaEntity;
+import br.com.lucrolivre.entity.MotoristaEntity;
 import org.springframework.stereotype.Repository;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
@@ -18,17 +18,16 @@ public class DynamoDbMotoristaRepository implements MotoristaRepository {
 
     private final DynamoDbTable<MotoristaEntity> tabela;
 
-    // AQUI ESTÁ A CORREÇÃO: Injetamos o DynamoDbClient padrão também para poder listar as tabelas
     public DynamoDbMotoristaRepository(DynamoDbEnhancedClient enhancedClient, DynamoDbClient standardClient) {
 
         // DIAGNÓSTICO DEFINITIVO
-        try {
-            System.out.println(">>> DIAGNÓSTICO AWS: Listando tabelas visíveis...");
-            ListTablesResponse response = standardClient.listTables();
-            response.tableNames().forEach(name -> System.out.println(">>> Tabela encontrada: " + name));
-        } catch (Exception e) {
-            System.err.println(">>> ERRO AO LISTAR: " + e.getMessage());
-        }
+//        try {
+//            System.out.println(">>> DIAGNÓSTICO AWS: Listando tabelas visíveis...");
+//            ListTablesResponse response = standardClient.listTables();
+//            response.tableNames().forEach(name -> System.out.println(">>> Tabela encontrada: " + name));
+//        } catch (Exception e) {
+//            System.err.println(">>> ERRO AO LISTAR: " + e.getMessage());
+//        }
 
         // Inicialização da tabela
         this.tabela = enhancedClient.table("LucroLivre", TableSchema.fromBean(MotoristaEntity.class));

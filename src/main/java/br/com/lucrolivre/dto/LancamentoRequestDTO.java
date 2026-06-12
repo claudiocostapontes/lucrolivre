@@ -1,6 +1,6 @@
-package dto;
+package br.com.lucrolivre.dto;
 
-import model.Origem;
+import br.com.lucrolivre.model.Origem;
 import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;

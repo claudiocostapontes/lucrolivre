@@ -1,6 +1,6 @@
-package repository;
+package br.com.lucrolivre.repository;
 
-import entity.LancamentoEntity;
+import br.com.lucrolivre.entity.LancamentoEntity;
 import org.springframework.stereotype.Repository;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;

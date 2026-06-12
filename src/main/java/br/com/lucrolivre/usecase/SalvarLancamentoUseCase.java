@@ -1,10 +1,10 @@
-package usecase;
+package br.com.lucrolivre.usecase;
 
-import dto.LancamentoRequestDTO;
-import repository.LancamentoRepository;
-import entity.LancamentoEntity;
-import entity.MotoristaEntity;
-import repository.MotoristaRepository;
+import br.com.lucrolivre.dto.LancamentoRequestDTO;
+import br.com.lucrolivre.repository.LancamentoRepository;
+import br.com.lucrolivre.entity.LancamentoEntity;
+import br.com.lucrolivre.entity.MotoristaEntity;
+import br.com.lucrolivre.repository.MotoristaRepository;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
 

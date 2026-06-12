@@ -1,4 +1,4 @@
-package entity;
+package br.com.lucrolivre.entity;
 
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
@@ -6,6 +6,9 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttri
 
 @DynamoDbBean
 public class MotoristaEntity {
+
+    public MotoristaEntity() {
+    }
 
     private String id;
     private String sk; // Adicione este campo
