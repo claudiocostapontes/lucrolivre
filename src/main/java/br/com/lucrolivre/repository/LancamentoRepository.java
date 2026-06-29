@@ -8,4 +8,5 @@ public interface LancamentoRepository {
     List<LancamentoEntity> findAll();
     void delete(String id);
     LancamentoEntity findById(String id);
+    List<LancamentoEntity> findByMotoristaId(String motoristaId);
 }

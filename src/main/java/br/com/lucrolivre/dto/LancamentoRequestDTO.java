@@ -11,11 +11,11 @@ public record LancamentoRequestDTO(
         @NotBlank(message = "O ID do motorista é obrigatório e não pode estar em branco.")
         String motoristaId,
 
-        @NotBlank(message = "A data do lançamento é obrigatória.")
-        String data,
+        @NotNull(message = "A data do lançamento é obrigatória.")
+        LocalDate data,
 
         @NotNull(message = "A origem do lançamento é obrigatória (Ex: UBER, 99).")
-        Origem origin,
+        Origem origem,
 
         @NotNull(message = "O valor bruto é obrigatório.")
         @PositiveOrZero(message = "O valor bruto deve ser maior ou igual a zero.")
@@ -28,4 +28,4 @@ public record LancamentoRequestDTO(
         @NotNull(message = "O gasto com manutenção é obrigatório.")
         @PositiveOrZero(message = "O gasto com manutenção deve ser maior ou igual a zero.")
         BigDecimal gastoManutencao
-){}
+) {}

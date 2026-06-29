@@ -19,17 +19,22 @@ public class LancamentoService {
 
     public LancamentoResponseDTO create(LancamentoRequestDTO dto) {
         LancamentoEntity entity = new LancamentoEntity();
+        return getLancamentoResponseDTO(dto, entity);
+    }
 
+    public LancamentoResponseDTO update(String id, LancamentoRequestDTO dto) {
+        LancamentoEntity entity = new LancamentoEntity();
+        entity.setId(id);
         return getLancamentoResponseDTO(dto, entity);
     }
 
     private LancamentoResponseDTO getLancamentoResponseDTO(LancamentoRequestDTO dto, LancamentoEntity entity) {
-        entity.setMotoristaId(dto.getMotoristaId());
-        entity.setData(dto.getData());
-        entity.setOrigem(dto.getOrigem());
-        entity.setValorBruto(dto.getValorBruto());
-        entity.setGastoCombustivel(dto.getGastoCombustivel());
-        entity.setGastoManutencao(dto.getGastoManutencao());
+        entity.setMotoristaId(dto.motoristaId());
+        entity.setData(dto.data());
+        entity.setOrigem(dto.origem());
+        entity.setValorBruto(dto.valorBruto());
+        entity.setGastoCombustivel(dto.gastoCombustivel());
+        entity.setGastoManutencao(dto.gastoManutencao());
 
         LancamentoEntity saved = repository.save(entity);
         return toResponseDTO(saved);
@@ -49,11 +54,11 @@ public class LancamentoService {
         return toResponseDTO(entity);
     }
 
-    public LancamentoResponseDTO update(String id, LancamentoRequestDTO dto) {
-        LancamentoEntity entity = new LancamentoEntity();
-        entity.setId(id);
-
-        return getLancamentoResponseDTO(dto, entity);
+    // NOVO MÉTODO: Busca rápida por motorista
+    public List<LancamentoResponseDTO> getByMotoristaId(String motoristaId) {
+        return repository.findByMotoristaId(motoristaId).stream()
+                .map(this::toResponseDTO)
+                .toList();
     }
 
     public void delete(String id) {
@@ -64,7 +69,7 @@ public class LancamentoService {
         return new LancamentoResponseDTO(
                 entity.getId(),
                 entity.getMotoristaId(),
-                entity.getData(), // Retirado o .toString() que estava a causar o erro
+                entity.getData(),
                 entity.getOrigem() != null ? entity.getOrigem().name() : null,
                 entity.getValorBruto(),
                 entity.getLucroLiquido()

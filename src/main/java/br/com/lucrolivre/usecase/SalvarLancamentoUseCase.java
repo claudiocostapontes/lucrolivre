@@ -3,10 +3,8 @@ package br.com.lucrolivre.usecase;
 import br.com.lucrolivre.dto.LancamentoRequestDTO;
 import br.com.lucrolivre.repository.LancamentoRepository;
 import br.com.lucrolivre.entity.LancamentoEntity;
-import br.com.lucrolivre.entity.MotoristaEntity;
 import br.com.lucrolivre.repository.MotoristaRepository;
 import org.springframework.stereotype.Service;
-import java.util.UUID;
 
 @Service
 public class SalvarLancamentoUseCase {
@@ -18,27 +16,19 @@ public class SalvarLancamentoUseCase {
         this.lancamentoRepository = lancamentoRepository;
         this.motoristaRepository = motoristaRepository;
     }
-
     public LancamentoEntity executar(LancamentoRequestDTO dto) {
-        // Validação defensiva
+
         if (dto.motoristaId() == null || dto.motoristaId().isEmpty()) {
             throw new IllegalArgumentException("O campo 'motoristaId' é obrigatório.");
         }
+        LancamentoEntity entity = new LancamentoEntity();
 
-        // Busca o motorista no banco. Agora, com o ajuste na entidade, ele encontrará a pk.
-        MotoristaEntity motorista = motoristaRepository.findById(dto.motoristaId())
-                .orElseThrow(() -> new IllegalArgumentException("Motorista não encontrado com o ID: " + dto.motoristaId()));
-
-        // Cria o lançamento
-        LancamentoEntity entity = new LancamentoEntity(
-                UUID.randomUUID().toString(),
-                motorista.getId(),
-                dto.data(),
-                dto.origem(),
-                dto.valorBruto(),
-                dto.gastoCombustivel(),
-                dto.gastoManutencao()
-        );
+        entity.setMotoristaId(dto.motoristaId());
+        entity.setData(dto.data());
+        entity.setOrigem(dto.origem());
+        entity.setValorBruto(dto.valorBruto());
+        entity.setGastoCombustivel(dto.gastoCombustivel());
+        entity.setGastoManutencao(dto.gastoManutencao());
 
         return lancamentoRepository.save(entity);
     }
